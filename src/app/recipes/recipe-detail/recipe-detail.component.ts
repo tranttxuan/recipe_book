@@ -9,7 +9,8 @@ import { RecipeService } from '../recipe.service';
     styleUrls: ['./recipe-detail.component.css']
 })
 export class RecipeDetailComponent implements OnInit {
-  recipe: Recipe;
+    recipe: Recipe;
+    
     constructor(private recipeService: RecipeService,
         private route: ActivatedRoute,
         private router: Router) {
@@ -19,7 +20,7 @@ export class RecipeDetailComponent implements OnInit {
         // const idParam = +this.route.snapshot.params["id"]
         // this.recipe = this.recipeService.getRecipe(idParam)
         this.route.params.subscribe(
-            (params:Params)=>{
+            (params: Params) => {
                 this.recipe = this.recipeService.getRecipe(+params["id"])
             }
         )
@@ -28,7 +29,7 @@ export class RecipeDetailComponent implements OnInit {
     onAddToShoppingList() {
         this.recipeService.addIngredientToShoppingList(this.recipe.ingredients)
     }
-    onEditRecipe(){
-this.router.navigate(['edit'], {relativeTo:this.route})
+    onEditRecipe() {
+        this.router.navigate(['edit'], { relativeTo: this.route })
     }
 }
